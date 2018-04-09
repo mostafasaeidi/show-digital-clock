@@ -1,6 +1,1 @@
-# Show  design digital clock
-
-
-# University of bojnurd 
-
- software engineering groupe 
+# sound_for_clock
