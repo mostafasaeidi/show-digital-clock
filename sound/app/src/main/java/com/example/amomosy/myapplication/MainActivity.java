@@ -1,11 +1,14 @@
 package com.example.amomosy.myapplication;
 
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import java.sql.Time;
@@ -18,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         final  Handler handler = new Handler();
-
+                                  /********************************** start shenasaei sound **********************************/
         final MediaPlayer sounds = MediaPlayer.create(this, R.raw.saat);
         final MediaPlayer soundd = MediaPlayer.create(this, R.raw.daghighemibashad);
         final MediaPlayer hours1 = MediaPlayer.create(this, R.raw.o1);
@@ -41,6 +44,10 @@ public class MainActivity extends AppCompatActivity {
         final MediaPlayer hours18 = MediaPlayer.create(this, R.raw.o18);
         final MediaPlayer hours19 = MediaPlayer.create(this, R.raw.o19);
         final MediaPlayer hours20 = MediaPlayer.create(this, R.raw.o20);
+        final MediaPlayer hours21 = MediaPlayer.create(this, R.raw.o21);
+        final MediaPlayer hours22 = MediaPlayer.create(this, R.raw.o22);
+        final MediaPlayer hours23 = MediaPlayer.create(this, R.raw.o23);
+        final MediaPlayer hours24 = MediaPlayer.create(this, R.raw.o24);
         final MediaPlayer hours30 = MediaPlayer.create(this, R.raw.o30);
         final MediaPlayer hours40 = MediaPlayer.create(this, R.raw.o40);
         final MediaPlayer hours50 = MediaPlayer.create(this, R.raw.o50);
@@ -72,9 +79,7 @@ public class MainActivity extends AppCompatActivity {
         final MediaPlayer min40 = MediaPlayer.create(this, R.raw.voice040);
         final MediaPlayer min50 = MediaPlayer.create(this, R.raw.voice050);
 
-
-
-
+                                    /**********************************end shenasaei sound **********************************/
 
 
 
@@ -85,11 +90,16 @@ public class MainActivity extends AppCompatActivity {
         final TextView t5 = (TextView) findViewById(R.id.txt2015);
         final TextView t6 = (TextView) findViewById(R.id.txt2pm);
         Button Show_time = (Button) findViewById(R.id.btn_showTime);
+
+
+
+
         Show_time.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
 
+                /******************start tarif date******************/
                 Date clock = new Date();
                 Date time = new Date();
                 int h = clock.getHours();
@@ -102,13 +112,11 @@ public class MainActivity extends AppCompatActivity {
                 t3.setText(String.valueOf(s));
                 t4.setText(String.valueOf(day));
                 t5.setText(String.valueOf(year));
-                if (h < 12)
-                    t6.setText("Am");
-
-                else
-                    t6.setText("Pm");
+/******************end tarif date******************/
 
 
+
+/******************************  start switch hours***************************/
                 sounds.start();
                 switch (h) {
 
@@ -130,253 +138,216 @@ public class MainActivity extends AppCompatActivity {
                             }
                         });
                         break;
-                 case 3:
+                    case 3:
 
-                     sounds.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                         @Override
-                         public void onCompletion(MediaPlayer mp) {
-                             hours3.start();
-                         }
-                     });
-                     break;
-                 case 4:
+                        sounds.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                            @Override
+                            public void onCompletion(MediaPlayer mp) {
+                                hours3.start();
+                            }
+                        });
+                        break;
+                    case 4:
 
-                     sounds.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                         @Override
-                         public void onCompletion(MediaPlayer mp) {
-                             hours4.start();
-                         }
-                     });
-                     break;
-                  case 5:
+                        sounds.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                            @Override
+                            public void onCompletion(MediaPlayer mp) {
+                                hours4.start();
+                            }
+                        });
+                        break;
+                    case 5:
 
-                      sounds.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                          @Override
-                          public void onCompletion(MediaPlayer mp) {
-                              hours5.start();
-                          }
-                      });
-                      break;
-                  case 6:
-                      sounds.start();
-                      sounds.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                          @Override
-                          public void onCompletion(MediaPlayer mp) {
-                              hours6.start();
-                          }
-                      });
-                      break;
-                  case 7:
+                        sounds.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                            @Override
+                            public void onCompletion(MediaPlayer mp) {
+                                hours5.start();
+                            }
+                        });
+                        break;
+                    case 6:
+                        sounds.start();
+                        sounds.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                            @Override
+                            public void onCompletion(MediaPlayer mp) {
+                                hours6.start();
+                            }
+                        });
+                        break;
+                    case 7:
 
-                      sounds.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                          @Override
-                          public void onCompletion(MediaPlayer mp) {
-                              hours7.start();
-                          }
-                      });
-                      break;
-                  case 8:
+                        sounds.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                            @Override
+                            public void onCompletion(MediaPlayer mp) {
+                                hours7.start();
+                            }
+                        });
+                        break;
+                    case 8:
 
-                      sounds.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                          @Override
-                          public void onCompletion(MediaPlayer mp) {
-                              hours8.start();
-                          }
-                      });
-                      break;
-                  case 9:
+                        sounds.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                            @Override
+                            public void onCompletion(MediaPlayer mp) {
+                                hours8.start();
+                            }
+                        });
+                        break;
+                    case 9:
 
-                      sounds.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                          @Override
-                          public void onCompletion(MediaPlayer mp) {
-                              hours9.start();
-                          }
-                      });
-                      break;
-                  case 10:
+                        sounds.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                            @Override
+                            public void onCompletion(MediaPlayer mp) {
+                                hours9.start();
+                            }
+                        });
+                        break;
+                    case 10:
 
-                      sounds.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                          @Override
-                          public void onCompletion(MediaPlayer mp) {
-                              hours10.start();
-                          }
-                      });
-                      break;
-                  case 11:
+                        sounds.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                            @Override
+                            public void onCompletion(MediaPlayer mp) {
+                                hours10.start();
+                            }
+                        });
+                        break;
+                    case 11:
 
-                      sounds.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                          @Override
-                          public void onCompletion(MediaPlayer mp) {
-                              hours11.start();
-                          }
-                      });
-                      break;
-                  case 12:
+                        sounds.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                            @Override
+                            public void onCompletion(MediaPlayer mp) {
+                                hours11.start();
+                            }
+                        });
+                        break;
+                    case 12:
 
-                      sounds.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                          @Override
-                          public void onCompletion(MediaPlayer mp) {
-                              hours12.start();
-                          }
-                      });
-                      break;
-                  case 13:
+                        sounds.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                            @Override
+                            public void onCompletion(MediaPlayer mp) {
+                                hours12.start();
+                            }
+                        });
+                        break;
+                    case 13:
 
-                      sounds.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                          @Override
-                          public void onCompletion(MediaPlayer mp) {
-                              hours13.start();
-                          }
-                      });
-                      break;
-                  case 14:
+                        sounds.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                            @Override
+                            public void onCompletion(MediaPlayer mp) {
+                                hours13.start();
+                            }
+                        });
+                        break;
+                    case 14:
 
-                      sounds.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                          @Override
-                          public void onCompletion(MediaPlayer mp) {
-                              hours14.start();
-                          }
-                      });
-                      break;
-                  case 15:
+                        sounds.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                            @Override
+                            public void onCompletion(MediaPlayer mp) {
+                                hours14.start();
+                            }
+                        });
+                        break;
+                    case 15:
 
-                      sounds.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                          @Override
-                          public void onCompletion(MediaPlayer mp) {
-                              hours15.start();
-                          }
-                      });
-                   break;
-                  case 16:
+                        sounds.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                            @Override
+                            public void onCompletion(MediaPlayer mp) {
+                                hours15.start();
+                            }
+                        });
+                        break;
+                    case 16:
 
-                      sounds.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                          @Override
-                          public void onCompletion(MediaPlayer mp) {
-                              hours16.start();
-                          }
-                      });
-                      break;
-                  case 17:
+                        sounds.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                            @Override
+                            public void onCompletion(MediaPlayer mp) {
+                                hours16.start();
+                            }
+                        });
+                        break;
+                    case 17:
 
-                      sounds.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                          @Override
-                          public void onCompletion(MediaPlayer mp) {
-                              hours17.start();
-                          }
-                      });
-                      break;
-                  case 18:
+                        sounds.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                            @Override
+                            public void onCompletion(MediaPlayer mp) {
+                                hours17.start();
+                            }
+                        });
+                        break;
+                    case 18:
 
-                      sounds.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                          @Override
-                          public void onCompletion(MediaPlayer mp) {
-                              hours18.start();
-                          }
-                      });
-                      break;
-                  case 19:
+                        sounds.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                            @Override
+                            public void onCompletion(MediaPlayer mp) {
+                                hours18.start();
+                            }
+                        });
+                        break;
+                    case 19:
 
-                      sounds.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                          @Override
-                          public void onCompletion(MediaPlayer mp) {
-                              hours19.start();
-                          }
-                      });
-                      break;
-                  case 20:
+                        sounds.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                            @Override
+                            public void onCompletion(MediaPlayer mp) {
+                                hours19.start();
+                            }
+                        });
+                        break;
+                    case 20:
 
-                      sounds.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                          @Override
-                          public void onCompletion(MediaPlayer mp) {
-                              hours20.start();
-                             
-                          }
-                      });
-                      break;
-                  case 21:
+                        sounds.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                            @Override
+                            public void onCompletion(MediaPlayer mp) {
+                                hours20.start();
 
-                      sounds.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                          @Override
-                          public void onCompletion(MediaPlayer mp) {
-                              hours20.start();
-                              hours20.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                                  @Override
-                                  public void onCompletion(MediaPlayer mp) {
-                                      min1.start();
-                                  }
-                              });
-                          }
-                      });
-                      break;
-                  case 22:
+                            }
+                        });
+                        break;
+                    case 21:
 
-                      sounds.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                          @Override
-                          public void onCompletion(MediaPlayer mp) {
-                              hours20.start();
-                              hours20.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                                  @Override
-                                  public void onCompletion(MediaPlayer mp) {
-                                      min2.start();
-                                      min2.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                                          @Override
-                                          public void onCompletion(MediaPlayer mp) {
-                                              oo.start();
-                                          }
-                                      });
-                                  }
-                              });
-                          }
-                      });
-                      break;
-                  case 23:
+                        sounds.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                            @Override
+                            public void onCompletion(MediaPlayer mp) {
+                                hours21.start();
 
-                      sounds.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                          @Override
-                          public void onCompletion(MediaPlayer mp) {
-                              hours20.start();
-                              hours20.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                                  @Override
-                                  public void onCompletion(MediaPlayer mp) {
-                                      min3.start();
-                                      min3.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                                          @Override
-                                          public void onCompletion(MediaPlayer mp) {
-                                              oo.start();
-                                          }
-                                      });
-                                  }
-                              });
-                          }
-                      });
-                      break;
-                  case 0:
+                            }
+                        });
+                        break;
+                    case 22:
 
-                      sounds.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                          @Override
-                          public void onCompletion(MediaPlayer mp) {
-                              hours20.start();
-                              hours20.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                                  @Override
-                                  public void onCompletion(MediaPlayer mp) {
-                                      min4.start();
-                                      min4.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                                          @Override
-                                          public void onCompletion(MediaPlayer mp) {
-                                              oo.start();
-                                          }
-                                      });
-                                  }
-                              });
-                          }
-                      });
-                      break;
+                        sounds.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                            @Override
+                            public void onCompletion(MediaPlayer mp) {
+                                hours22.start();
+
+                            }
+                        });
+                        break;
+                    case 23:
+
+                        sounds.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                            @Override
+                            public void onCompletion(MediaPlayer mp) {
+                                hours23.start();
+
+                            }
+                        });
+                        break;
+                    case 0:
+
+                        sounds.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                            @Override
+                            public void onCompletion(MediaPlayer mp) {
+                                hours24.start();
+
+                            }
+                        });
+                        break;
 
 
                 }
+/******************************  end switch hours*****************************/
 
-
-               switch (m){
+/******************************  start switch minutes*****************************/
+                switch (m){
 
                     case 1:
                         handler.postDelayed(new Runnable() {
@@ -390,7 +361,7 @@ public class MainActivity extends AppCompatActivity {
                                 });
 
                             }
-                        }, 2000);
+                        }, 3000);
                         break;
                     case 2:
                         handler.postDelayed(new Runnable() {
@@ -404,7 +375,7 @@ public class MainActivity extends AppCompatActivity {
                                 });
 
                             }
-                        }, 2000);
+                        }, 3000);
                         break;
                     case 3:
                         handler.postDelayed(new Runnable() {
@@ -418,7 +389,7 @@ public class MainActivity extends AppCompatActivity {
                                 });
 
                             }
-                        }, 2000);
+                        }, 3000);
                         break;
                     case 4:
                         handler.postDelayed(new Runnable() {
@@ -432,7 +403,7 @@ public class MainActivity extends AppCompatActivity {
                                 });
 
                             }
-                        }, 2000);
+                        }, 3000);
                         break;
                     case 5:
                         handler.postDelayed(new Runnable() {
@@ -446,7 +417,7 @@ public class MainActivity extends AppCompatActivity {
                                 });
 
                             }
-                        }, 2000);
+                        }, 3000);
                         break;
                     case 6:
                         handler.postDelayed(new Runnable() {
@@ -460,7 +431,7 @@ public class MainActivity extends AppCompatActivity {
                                 });
 
                             }
-                        }, 2000);
+                        }, 3000);
                         break;
                     case 7:
                         handler.postDelayed(new Runnable() {
@@ -474,7 +445,7 @@ public class MainActivity extends AppCompatActivity {
                                 });
 
                             }
-                        }, 2000);
+                        }, 3000);
                         break;
                     case 8:
                         handler.postDelayed(new Runnable() {
@@ -488,7 +459,7 @@ public class MainActivity extends AppCompatActivity {
                                 });
 
                             }
-                        }, 2000);
+                        }, 3000);
                         break;
                     case 9:
                         handler.postDelayed(new Runnable() {
@@ -502,7 +473,7 @@ public class MainActivity extends AppCompatActivity {
                                 });
 
                             }
-                        }, 2000);
+                        }, 3000);
                         break;
                     case 10:
                         handler.postDelayed(new Runnable() {
@@ -516,7 +487,7 @@ public class MainActivity extends AppCompatActivity {
                                 });
 
                             }
-                        }, 2000);
+                        }, 3000);
                         break;
                     case 11:
                         handler.postDelayed(new Runnable() {
@@ -530,7 +501,7 @@ public class MainActivity extends AppCompatActivity {
                                 });
 
                             }
-                        }, 2000);
+                        }, 3000);
                         break;
                     case 12:
                         handler.postDelayed(new Runnable() {
@@ -544,7 +515,7 @@ public class MainActivity extends AppCompatActivity {
                                 });
 
                             }
-                        }, 2000);
+                        }, 3000);
                         break;
                     case 13:
                         handler.postDelayed(new Runnable() {
@@ -558,7 +529,7 @@ public class MainActivity extends AppCompatActivity {
                                 });
 
                             }
-                        }, 2000);
+                        }, 3000);
                         break;
                     case 14:
                         handler.postDelayed(new Runnable() {
@@ -572,7 +543,7 @@ public class MainActivity extends AppCompatActivity {
                                 });
 
                             }
-                        }, 2000);
+                        }, 3000);
                         break;
                     case 15:
                         handler.postDelayed(new Runnable() {
@@ -586,7 +557,7 @@ public class MainActivity extends AppCompatActivity {
                                 });
 
                             }
-                        }, 2000);
+                        }, 3000);
                         break;
                     case 16:
                         handler.postDelayed(new Runnable() {
@@ -600,7 +571,7 @@ public class MainActivity extends AppCompatActivity {
                                 });
 
                             }
-                        }, 2000);
+                        }, 3000);
                         break;
                     case 17:
                         handler.postDelayed(new Runnable() {
@@ -614,7 +585,7 @@ public class MainActivity extends AppCompatActivity {
                                 });
 
                             }
-                        }, 2000);
+                        }, 3000);
                         break;
                     case 18:
                         handler.postDelayed(new Runnable() {
@@ -628,7 +599,7 @@ public class MainActivity extends AppCompatActivity {
                                 });
 
                             }
-                        }, 2000);
+                        }, 3000);
                         break;
                     case 19:
                         handler.postDelayed(new Runnable() {
@@ -642,7 +613,7 @@ public class MainActivity extends AppCompatActivity {
                                 });
 
                             }
-                        }, 2000);
+                        }, 3000);
                         break;
                     case 20:
                         handler.postDelayed(new Runnable() {
@@ -656,7 +627,7 @@ public class MainActivity extends AppCompatActivity {
                                 });
 
                             }
-                        }, 2000);
+                        }, 3000);
 
                         break;
                     case 21:
@@ -677,7 +648,7 @@ public class MainActivity extends AppCompatActivity {
                                 });
 
                             }
-                        }, 2000);
+                        }, 3000);
                         break;
                     case 22:
                         handler.postDelayed(new Runnable() {
@@ -697,7 +668,7 @@ public class MainActivity extends AppCompatActivity {
                                 });
 
                             }
-                        }, 2000);
+                        }, 3000);
                     case 23:
                         handler.postDelayed(new Runnable() {
                             public void run() {
@@ -716,7 +687,7 @@ public class MainActivity extends AppCompatActivity {
                                 });
 
                             }
-                        }, 2000);
+                        }, 3000);
                         break;
                     case 24:
                         handler.postDelayed(new Runnable() {
@@ -736,7 +707,7 @@ public class MainActivity extends AppCompatActivity {
                                 });
 
                             }
-                        }, 2000);
+                        }, 3000);
                         break;
                     case 25:
                         handler.postDelayed(new Runnable() {
@@ -756,7 +727,7 @@ public class MainActivity extends AppCompatActivity {
                                 });
 
                             }
-                        }, 2000);
+                        }, 3000);
                         break;
                     case 26:
                         handler.postDelayed(new Runnable() {
@@ -776,7 +747,7 @@ public class MainActivity extends AppCompatActivity {
                                 });
 
                             }
-                        }, 2000);
+                        }, 3000);
                         break;
                     case 27:
                         handler.postDelayed(new Runnable() {
@@ -796,7 +767,7 @@ public class MainActivity extends AppCompatActivity {
                                 });
 
                             }
-                        }, 2000);
+                        }, 3000);
                         break;
                     case 28:
                         handler.postDelayed(new Runnable() {
@@ -816,7 +787,7 @@ public class MainActivity extends AppCompatActivity {
                                 });
 
                             }
-                        }, 2000);
+                        }, 3000);
                         break;
                     case 29:
                         handler.postDelayed(new Runnable() {
@@ -836,7 +807,7 @@ public class MainActivity extends AppCompatActivity {
                                 });
 
                             }
-                        }, 2000);
+                        }, 3000);
                         break;
                     case 30:
                         handler.postDelayed(new Runnable() {
@@ -850,7 +821,7 @@ public class MainActivity extends AppCompatActivity {
                                 });
 
                             }
-                        }, 2000);
+                        }, 3000);
                         break;
                     case 31:
                         handler.postDelayed(new Runnable() {
@@ -870,7 +841,7 @@ public class MainActivity extends AppCompatActivity {
                                 });
 
                             }
-                        }, 2000);
+                        }, 3000);
                         break;
                     case 32:
                         handler.postDelayed(new Runnable() {
@@ -890,7 +861,7 @@ public class MainActivity extends AppCompatActivity {
                                 });
 
                             }
-                        }, 2000);
+                        }, 3000);
                         break;
                     case 33:
                         handler.postDelayed(new Runnable() {
@@ -910,7 +881,7 @@ public class MainActivity extends AppCompatActivity {
                                 });
 
                             }
-                        }, 2000);
+                        }, 3000);
                         break;
                     case 34:
                         handler.postDelayed(new Runnable() {
@@ -930,7 +901,7 @@ public class MainActivity extends AppCompatActivity {
                                 });
 
                             }
-                        }, 2000);
+                        }, 3000);
                         break;
                     case 35:
                         handler.postDelayed(new Runnable() {
@@ -950,7 +921,7 @@ public class MainActivity extends AppCompatActivity {
                                 });
 
                             }
-                        }, 2000);
+                        }, 3000);
 
                         break;
                     case 36:
@@ -973,27 +944,27 @@ public class MainActivity extends AppCompatActivity {
                             }
                         }, 2000);
                         break;
-                   case 37:
-                       handler.postDelayed(new Runnable() {
-                           public void run() {
-                               hours30.start();
-                               hours30.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                                   @Override
-                                   public void onCompletion(MediaPlayer mp) {
-                                       min7.start();
-                                       min7.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                                           @Override
-                                           public void onCompletion(MediaPlayer mp) {
-                                               soundd.start();
-                                           }
-                                       });
-                                   }
-                               });
+                    case 37:
+                        handler.postDelayed(new Runnable() {
+                            public void run() {
+                                hours30.start();
+                                hours30.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                                    @Override
+                                    public void onCompletion(MediaPlayer mp) {
+                                        min7.start();
+                                        min7.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                                            @Override
+                                            public void onCompletion(MediaPlayer mp) {
+                                                soundd.start();
+                                            }
+                                        });
+                                    }
+                                });
 
-                           }
-                       }, 2000);
+                            }
+                        }, 3000);
 
-                       break;
+                        break;
                     case 38:
                         handler.postDelayed(new Runnable() {
                             public void run() {
@@ -1012,7 +983,7 @@ public class MainActivity extends AppCompatActivity {
                                 });
 
                             }
-                        }, 2000);
+                        }, 3000);
                         break;
                     case 39:
                         handler.postDelayed(new Runnable() {
@@ -1086,7 +1057,7 @@ public class MainActivity extends AppCompatActivity {
                                 });
 
                             }
-                        }, 2000);
+                        }, 3000);
                         break;
                     case 43:
                         handler.postDelayed(new Runnable() {
@@ -1106,7 +1077,7 @@ public class MainActivity extends AppCompatActivity {
                                 });
 
                             }
-                        }, 2000);
+                        }, 3000);
                         break;
                     case 44:
                         handler.postDelayed(new Runnable() {
@@ -1126,7 +1097,7 @@ public class MainActivity extends AppCompatActivity {
                                 });
 
                             }
-                        }, 2000);
+                        }, 3000);
                         break;
                     case 45:
                         handler.postDelayed(new Runnable() {
@@ -1146,7 +1117,7 @@ public class MainActivity extends AppCompatActivity {
                                 });
 
                             }
-                        }, 2000);
+                        }, 3000);
                         break;
                     case 46:
                         handler.postDelayed(new Runnable() {
@@ -1166,7 +1137,7 @@ public class MainActivity extends AppCompatActivity {
                                 });
 
                             }
-                        }, 2000);
+                        }, 3000);
                         break;
                     case 47:
                         handler.postDelayed(new Runnable() {
@@ -1186,7 +1157,7 @@ public class MainActivity extends AppCompatActivity {
                                 });
 
                             }
-                        }, 2000);
+                        }, 3000);
                         break;
                     case 48:
                         handler.postDelayed(new Runnable() {
@@ -1206,7 +1177,7 @@ public class MainActivity extends AppCompatActivity {
                                 });
 
                             }
-                        }, 2000);
+                        }, 3000);
                         break;
                     case 49:
                         handler.postDelayed(new Runnable() {
@@ -1226,7 +1197,7 @@ public class MainActivity extends AppCompatActivity {
                                 });
 
                             }
-                        }, 2000);
+                        }, 3000);
                         break;
                     case 50:
                         handler.postDelayed(new Runnable() {
@@ -1240,7 +1211,7 @@ public class MainActivity extends AppCompatActivity {
                                 });
 
                             }
-                        }, 2000);
+                        }, 3000);
                         break;
                     case 51:
                         handler.postDelayed(new Runnable() {
@@ -1260,7 +1231,7 @@ public class MainActivity extends AppCompatActivity {
                                 });
 
                             }
-                        }, 2000);
+                        }, 3000);
                         break;
                     case 52:
                         handler.postDelayed(new Runnable() {
@@ -1280,7 +1251,7 @@ public class MainActivity extends AppCompatActivity {
                                 });
 
                             }
-                        }, 2000);
+                        }, 3000);
                         break;
                     case 53:
                         handler.postDelayed(new Runnable() {
@@ -1300,7 +1271,7 @@ public class MainActivity extends AppCompatActivity {
                                 });
 
                             }
-                        }, 2000);
+                        }, 3000);
                         break;
                     case 54:
                         handler.postDelayed(new Runnable() {
@@ -1320,7 +1291,7 @@ public class MainActivity extends AppCompatActivity {
                                 });
 
                             }
-                        }, 2000);
+                        }, 3000);
                         break;
                     case 55:
                         handler.postDelayed(new Runnable() {
@@ -1340,7 +1311,7 @@ public class MainActivity extends AppCompatActivity {
                                 });
 
                             }
-                        }, 2000);
+                        }, 3000);
                         break;
                     case 56:
                         handler.postDelayed(new Runnable() {
@@ -1360,7 +1331,7 @@ public class MainActivity extends AppCompatActivity {
                                 });
 
                             }
-                        }, 2000);
+                        }, 3000);
                         break;
                     case 57:
                         handler.postDelayed(new Runnable() {
@@ -1380,7 +1351,7 @@ public class MainActivity extends AppCompatActivity {
                                 });
 
                             }
-                        }, 2000);
+                        }, 3000);
                         break;
                     case 58:
                         handler.postDelayed(new Runnable() {
@@ -1400,7 +1371,7 @@ public class MainActivity extends AppCompatActivity {
                                 });
 
                             }
-                        }, 2000);
+                        }, 3000);
                         break;
                     case 59:
                         handler.postDelayed(new Runnable() {
@@ -1420,7 +1391,7 @@ public class MainActivity extends AppCompatActivity {
                                 });
 
                             }
-                        }, 2000);
+                        }, 3000);
                         break;
 
 
@@ -1429,7 +1400,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
+/******************************  end switch minutes*****************************/
 
     }
 }
