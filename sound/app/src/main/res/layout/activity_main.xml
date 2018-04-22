@@ -80,9 +80,9 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="50dp"
         android:fontFamily="@font/digital7"
-        android:text="3"
+        android:text="--"
         android:textColor="@color/blue"
-        android:textSize="140dp"
+        android:textSize="110dp"
         android:layout_below="@+id/image"
 
         />
@@ -92,9 +92,9 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="40dp"
         android:fontFamily="@font/digital7"
-        android:text="52"
+        android:text="--"
         android:textColor="@color/blue"
-        android:textSize="140dp"
+        android:textSize="110dp"
         android:layout_toRightOf="@+id/txt3"
         android:layout_below="@id/txt11"
 
@@ -106,7 +106,7 @@
         android:layout_marginLeft="10dp"
         android:layout_weight="1"
         android:fontFamily="@font/digital7"
-        android:text="pm"
+        android:text=""
         android:textColor="@color/blue"
         android:textSize="40dp"
         android:layout_toRightOf="@+id/txt52"
@@ -121,7 +121,7 @@
         android:layout_marginLeft="10dp"
         android:layout_weight="2"
         android:fontFamily="@font/digital7"
-        android:text="46"
+        android:text="--"
         android:textColor="@color/blue"
         android:textSize="40dp"
         android:layout_toRightOf="@+id/txt52"
@@ -136,7 +136,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/blue"
         android:textSize="40dp"
-        android:text="15"
+        android:text="--"
         android:fontFamily="@font/digital7"
         android:layout_marginLeft="50dp"
         android:layout_marginTop="30dp"
@@ -163,7 +163,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/blue"
         android:textSize="40dp"
-        android:text="2015"
+        android:text="--"
         android:fontFamily="@font/digital7"
         android:layout_marginTop="30dp"
         android:layout_marginLeft="20dp"
@@ -198,8 +198,39 @@
         android:textSize="25dp"
 
         />
+    <RadioGroup
+        android:id="@+id/rg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/btn_showTime"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+
+        >
+        <RadioButton
+            android:id="@+id/h24"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="24h"
+            android:textSize="20dp"
+            android:textColor="@color/white"
+            android:checked="true" />
+
+        />
+        <RadioButton
+            android:id="@+id/h12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="12h"
+            android:textSize="20dp"
+            android:textColor="@color/white"
+
+            />
 
 
+
+    </RadioGroup>
 
 
 </RelativeLayout>
