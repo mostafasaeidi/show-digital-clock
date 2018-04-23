@@ -1,8 +1,10 @@
 package com.example.amomosy.myapplication;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.view.menu.MenuWrapperFactory;
@@ -17,19 +19,21 @@ import java.util.Date;
 
 public class MainActivity extends AppCompatActivity implements MediaPlayer.OnCompletionListener
 {
+    private boolean flag;
+    private int loc=0;
+    private int  h=0;
+
     private  int [] soundS={
             R.raw.o1,
-            R.raw.o1,
-            R.raw.o1,
+            R.raw.o2,
+            R.raw.o3,
             R.raw.daghighemibashad,
-            0,
-
-
+            0
     };
-    private int loc=0;
+
 
     private int [] soundM={
-
+            0,
             R.raw.voice001,
             R.raw.voice002,
             R.raw.voice003,
@@ -49,10 +53,10 @@ public class MainActivity extends AppCompatActivity implements MediaPlayer.OnCom
             R.raw.voice017,
             R.raw.voice018,
             R.raw.voice019,
-            R.raw.voice020,
+            R.raw.voice020
 
 };
-    private int [] soundo={
+    private int [] soundO={
             0,
             R.raw.o1,
             R.raw.o2,
@@ -73,7 +77,7 @@ public class MainActivity extends AppCompatActivity implements MediaPlayer.OnCom
             R.raw.o17,
             R.raw.o18,
             R.raw.o19,
-            R.raw.o20,
+            R.raw.o20
 
 
     };
@@ -84,7 +88,7 @@ public class MainActivity extends AppCompatActivity implements MediaPlayer.OnCom
             R.raw.o20,
             R.raw.o30,
             R.raw.o40,
-            R.raw.o50,
+            R.raw.o50
     };
     private int [] soundM10={
             0,
@@ -92,10 +96,11 @@ public class MainActivity extends AppCompatActivity implements MediaPlayer.OnCom
             R.raw.voice020,
             R.raw.voice030,
             R.raw.voice040,
-            R.raw.voice050,
+            R.raw.voice050
 
 
     };
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -117,42 +122,20 @@ public class MainActivity extends AppCompatActivity implements MediaPlayer.OnCom
         Button Show_time = (Button) findViewById(R.id.btn_showTime);
 
 
-/*****************start use radio buton *****************/
-      /*  rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (checkedId == R.id.h12) {
-                    SharedPreferences sp = getSharedPreferences("myshared", MODE_PRIVATE);
-                    sp.edit().putInt("check", checkedId).apply();
-                    sp.edit().putInt("check", checkedId).commit();
-
-                    t1.setText(String.valueOf(n));
-                    if (h < 12)
-                        t6.setText("Am");
-                    else
-                        t6.setText("Pm");
-                } else {
-                    t6.setText("");
-                    t1.setText(String.valueOf(h));
-
-                }
-            }
-        });*/
-
-/*****************************end use radio buton **************************/
-
         Show_time.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
 /******************start tarif date******************/
-                Date clock = new Date();
+                final Date clock = new Date();
                 Date time = new Date();
-                int h = clock.getHours();
+                h = clock.getHours();
                 int m = clock.getMinutes();
                 int s = clock.getSeconds();
                 int day = time.getDate();
                 int year = time.getYear();
-                t1.setText(String.valueOf(h));
+
+
                 t2.setText(String.valueOf(m));
                 t3.setText(String.valueOf(s));
                 t4.setText(String.valueOf(day));
@@ -160,19 +143,67 @@ public class MainActivity extends AppCompatActivity implements MediaPlayer.OnCom
 
 /******************end tarif date******************/
 
-    if(h==0)
-        h=12;
 
-    int i=0;
-    if(m==0)
-    soundS[i++]=soundM[h];
-    else
-        soundS[i++]= soundo[h];
+/*****************start use radio buton *****************/
+               SharedPreferences prefs;
+                prefs = getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
+               final SharedPreferences.Editor editor = prefs.edit();
+               flag=prefs.getBoolean("flag",Boolean.parseBoolean(null));
 
+                if(flag)
+                    h12.setChecked(true);
+                else
+                    h24.setChecked(true);
 
+               rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+                    public void onCheckedChanged(RadioGroup group, int checkedId) {
+                        if (checkedId == R.id.h12) {
+                           flag=true;
+                           editor.putBoolean("flag",true);
+                           editor.apply();
+                            if (h < 12) {
+                                t6.setText("Am");
+                                t1.setText(String.valueOf(h));
+                            }
+                            else
+                                t6.setText("Pm");
+
+                            if (h==0)
+                                h=12;
+                            if(h>12) {
+                                h=clock.getHours();
+                                h -= 12;
+                                t1.setText(String.valueOf(h));
+                            }
+
+                        }
+
+                        else {
+                            flag=false;
+                            editor.putBoolean("flag",false);
+                            editor.apply();
+                            h=clock.getHours();
+                            t6.setText("");
+                            t1.setText(String.valueOf(h));
+
+                        }
+
+                    }
+                });
+
+/*****************************end use radio buton **************************/
+     loc=0;
+     int i=0;
+    if(m==0) {
+        soundS[i++] = soundM[h];
+    }
+    else {
+        soundS[i++] = soundO[h];
+    }
     if(m<20)
         soundS[i++]=soundM[m];
     else
+
     {
 
     int m10=m/10;
@@ -201,13 +232,15 @@ public class MainActivity extends AppCompatActivity implements MediaPlayer.OnCom
 
     @Override
     public void onCompletion(MediaPlayer mp) {
-        if(soundS[loc]!=0) {
+        if(soundS[loc]!=0)
+        {
             MediaPlayer m = MediaPlayer.create(this, soundS[loc]);
             loc++;
             m.setOnCompletionListener(this);
             m.start();
         }
-    }
+}
+
 }
 
 
